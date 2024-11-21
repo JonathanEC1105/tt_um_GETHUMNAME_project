@@ -9,15 +9,18 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Finonnaci LFSRs
+The chip generates a PRBS31 signal using a Fibonacci LFSR and analyzes it with the same structure. The output of the PRBS is taken off the chip and read back in to be analyzed.  
+The PRBS generator is based on a 31-bit linear shift register with the feedback coming from registers 30 and 27.
+Everything will be documented here:https://docs.google.com/document/d/1nhcHBQsxXUUo1_4WGjxFoWHzpVBCy18a5GQimM9eUtQ/edit?usp=sharing
+co-lab code: https://colab.research.google.com/drive/1uSGfoFdt0cDL9Ya7yrQQEXQ4FVlEGef5?usp=drive_link
 
-A 16-bit Fibonacci LFRS. The feedback tap numbers shown correspond to a primitive polynomial in the table, so the register cycles through the maximum number of 65535 states excluding the all-zero state. The state shown, 0xACE1 (hexadecimal) will be followed by 0x5670.
-Duration: 30 seconds.0:30 
-A Fibonacci 31-bit linear feedback shift with taps at positions 28 and 31, giving it a maximum cycle and period at this speed of nearly 6.7 years. The bit positions that affect the next state are called the taps. In the diagram the taps are [16,13,14,11]. The rightmost bit of the LFSR is called the output bit, wich is always also a tap. To obtain the next bit, the taps bits are XOR-ed sequentially, then, all bits are shifted one bit to the right, with the rightmost bit being discarded, and that result of XOR-ing the tap bits fed back into the now vacant leftmost bit. To obtain the pseudoram output stream, read the rightmost bit after each state transition.  
 
 ## How to test
 
-Input clock and reset
+Input Clock and reset (Low high, then low)
+Take the output out of port io_out[0] and feed it back into the chip (after transmitting it if you like.) iio_out[1] will be zero after 31 clock cycles  if the data is correct.
+You can also capture the data and check it against the code at the end of the co-lab code listed above.
+
 
 ## External hardware
 
