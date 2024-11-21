@@ -11,7 +11,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 The chip generates a PRBS31 signal using a Fibonacci LFSR and analyzes it with the same structure. The output of the PRBS is taken off the chip and read back in to be analyzed.  
 The PRBS generator is based on a 31-bit linear shift register with the feedback coming from registers 30 and 27.
-Everything will be documented here:https://docs.google.com/document/d/1nhcHBQsxXUUo1_4WGjxFoWHzpVBCy18a5GQimM9eUtQ/edit?usp=sharing
+Everything will be documented here: https://docs.google.com/document/d/1nhcHBQsxXUUo1_4WGjxFoWHzpVBCy18a5GQimM9eUtQ/edit?usp=sharing
 co-lab code: https://colab.research.google.com/drive/1uSGfoFdt0cDL9Ya7yrQQEXQ4FVlEGef5?usp=drive_link
 
 
