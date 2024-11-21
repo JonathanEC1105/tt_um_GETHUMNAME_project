@@ -15,6 +15,16 @@ module tt_um_GETHUMNAME_project (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
+    reg [30:0] lfsr; 
+    always @(posedge clk or posedge rst_n) begin
+        if (rst_n) begin
+        lfsr <= 31'd1; // Reset counter
+    end else begin
+        // Increment counter on each clock cycle
+        lfsr[0] <= lfsr[27] ^ lfsr[30] ;
+        lfsr[30:1] <=lfsr[29:0] ;  
+    end
+end  
 
   // All output pins must be assigned. If not used, assign to 0.
   assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
